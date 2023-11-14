@@ -1,0 +1,75 @@
+{% load static %}
+<html>
+    <head>
+        <title>Mon site </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+
+
+    <body>
+        <header>
+            <img class = "logo" src="{{ MEDIA_URL }}deco/ballon.png"/>
+            <h1 class = "title">FFVolley-Ball</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'base' %}">Accueil</a></li>
+                    <li><a href="{% url 'formulaire' %}">Créer des Joueurs</a></li>
+                    <li><a href="{%url 'post_list'%}">Répartition Joueurs</a></li>
+                
+
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <aside>
+                <p> Tous les Joueurs :</p>
+                <!-- Contenu de l'aside ici -->
+                <table>
+
+    
+                    {% for j in joueurs %}
+                    <tr> 
+                        <td>{{ j.nom }}</td>
+                        <td>{{j.numero}}</td>
+                        <td>{{j.poste}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </aside>
+            <div class="content">
+                {% block content %}
+                <h1> L'Equipe :</h1>
+                {% for j in joueurs %}
+                {% if forloop.counter <= 6 %}
+            
+                        <img  class = "photojoueurs" src="{{MEDIA_URL}}{{j.photo}}"/>
+                {%endif%}
+                {% endfor %}
+                
+    
+        
+                {% endblock %}
+                
+                
+            
+                </div>
+            </div>
+            
+    </form>
+           
+    
+            
+        </main>
+    
+        <footer>
+            <p> </p>
+            <p> </p>
+            <a href="https://www.instagram.com/ffvolley/" target ="_blank">insta</a>
+            <a href="http://ffvb.org" target = "_blank">site offciel </a>
+            <a href="">github</a>
+            <!-- Pied de page ici -->
+        </footer>
+    </body>
+</html>

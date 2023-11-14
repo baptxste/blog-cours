@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="repar">
+            <div class ="repart">
+                <p> Titulaires :</p>
+                
+                
+                <table>
+                    {% for j in joueurs %}
+                    {% if forloop.counter <= 6 %}
+    
+                    <tr> 
+                        <td>{{ j.nom }}</td>
+                        <td>{{j.numero}}</td>
+                    </tr>
+                    {%endif%}
+                {% endfor %}
+                </table>
+
+            </div>
+            <div class ="repart">
+                <p> Remplacants :</p>
+
+                <table>
+                {% for j in joueurs|slice:"6:9" %}
+                <tr> 
+                    <td>{{ j.nom }}</td>
+                    <td>{{j.numero}}</td>
+                </tr>
+                
+                {% endfor %}
+                
+                </table>
+                
+
+            </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+{% block test %}
+
+{% endblock %}
