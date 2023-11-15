@@ -10,7 +10,7 @@
 <h2>Choisir le joueur à modifier</h2>
 
 {% for j in joueurs %}
-            <li><a href="{% url 'modif_joueur' j.numero %}">{{ j.nom }}</a></li>
+            <li><a href="{% url 'modif_joueur' %}">{{ j.nom }}</a></li>
         {% endfor %}
 
 {% endblock %}

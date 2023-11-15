@@ -3,13 +3,13 @@ from .models import Equipement, Joueur
 from django.utils import timezone
 from django.conf import settings
 import os
-from .form import testf
+
 
 def post_list(request):
     joueurs= Joueur.objects.all()
     equips = Equipement.objects.all()
     return render(request, 'blog/post_list.html', { 'joueurs':joueurs, 'equips':equips})
-
+""" 
 def formulaire(request):
     if request.method == 'POST':
         form = testf(request.POST, request.FILES)
@@ -23,29 +23,29 @@ def formulaire(request):
     joueurs= Joueur.objects.all()
     equips = Equipement.objects.all()
     return render(request, 'blog/formulaire.html', { 'joueurs':joueurs, 'equips':equips, 'form':form})
-
+ """
 def base(request):
     joueurs= Joueur.objects.all()
     equips = Equipement.objects.all()
     return render(request,'blog/base.html',{ 'joueurs':joueurs, 'equips':equips})
 
 
-from .form import modifnom
+from .form import createplayer
 
-def modif_joueur(request, numero):
+def modif_joueur(request):
     joueurs= Joueur.objects.all()
     equips = Equipement.objects.all()
-    #joueur = Joueur.objects.get(Joueur, numero=numero)  
-    joueur = get_object_or_404(Joueur, numero=numero) 
     if request.method == 'POST':
-        form = modifnom(request.POST, instance=joueur)
+        form = createplayer(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('page_accueil')  # Redirigez vers la page d'accueil ou une autre page après la modification
+            return redirect('http://127.0.0.1:8000')  # Redirigez vers la page d'accueil ou une autre page après la modification
+        else :
+            print('erreur',form.errors)
     else:
-        form = modifnom(instance=joueur)
+        form = createplayer()
 
-    return render(request, 'modifier_joueur.html', {'joueurs':joueurs, 'equips':equips,'form': form, 'joueur': joueur})
+    return render(request, 'blog/modifier_joueur.html', {'joueurs':joueurs, 'equips':equips,'form': form,})
 
 
 

@@ -3,9 +3,9 @@ from . import views
 
 urlpatterns = [
     path('post/', views.post_list, name='post_list'),
-    path('formulaire/', views.formulaire, name='formulaire'),
+    #path('formulaire/', views.formulaire, name='formulaire'),
     path('',views.base, name ='base'),
-    path('modifier_joueur/<int:numero>/', views.modif_joueur, name='modif_joueur'),
+    path('modifier_joueur/', views.modif_joueur, name='modif_joueur'),
 ]
 
 

@@ -14,7 +14,7 @@ class Joueur(models.Model):
     numero= models.CharField(max_length=100, primary_key=True) #numero de maillot unique
     nom = models.CharField(max_length=50)
     poste = models.CharField(max_length=20) 
-    photo = models.ImageField(upload_to='photos/')
+    photo = models.ImageField(upload_to='photos/', null=True, blank=True)
     lieu = models.ForeignKey(Equipement, on_delete=models.CASCADE)
     def __str__(self):
         return self.numero
